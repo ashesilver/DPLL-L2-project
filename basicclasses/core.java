@@ -1,4 +1,4 @@
-package basiccclasses;
+package basicclasses;
 
 
 class core {
@@ -34,19 +34,19 @@ public class Non extends Form{
 
 	public Non(){}
 
-	public print(){}
+	public void print(){}
 }
 
-private class Top{
+public class Top{
 	boolean binaryValue = true;
 
-	private Top(){}
+	public Top(){}
 }
 
-private class Bot{
+public class Bot{
 	boolean binaryValue = false;
 
-	private Bot(){}
+	public Bot(){}
 }
 
 public class Et extends BinaireOP{
