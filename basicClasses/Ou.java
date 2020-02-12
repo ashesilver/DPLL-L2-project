@@ -2,9 +2,18 @@ package basicClasses;
 
 public class Ou extends BinaireOP {
 
-	//Attributs
-	int priorityLevel = 1;
-
 	//Constructeur
-	public Ou(){}
+    public Ou (Form e1, Form e2) {
+	this.e1 = e1;
+	this.e2 = e2;
+	}
+
+    public void print () {
+	System.out.print("(");
+	e1.print ();
+	System.out.print("∨");
+	e2.print ();
+	System.out.print(")");
+    }
+    
 }

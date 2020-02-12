@@ -6,8 +6,13 @@ public class Non extends Form {
 	Form e;
 
 	//Constructeur
-	public Non(){}
+	public Non (Form e){
+	    this.e = e;
+	}
 
 	//Méthodes
-	public void print(){}
+	public void print(){
+	    System.out.print("¬");
+	    e.print();
+	}
 }

@@ -1,7 +1,7 @@
 package basicClasses;
 
-public abstract class BinaireOP {
+public abstract class BinaireOP extends Form {
 
-	//Constructeur
-	public BinaireOP(){}
+    Form e1, e2;
+ 
 }

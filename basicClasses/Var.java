@@ -6,11 +6,13 @@ public class Var extends Form {
 	String nom;
 
 	//Constructeur
-	public Var(){
-		nom="Unknown";
+	public Var(String nom){
+		this.nom = nom;
 	}
 
 	//Méthodes
-	public void print(){}
+	public void print(){
+	    System.out.print(nom);
+	}
 
 }
