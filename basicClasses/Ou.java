@@ -4,10 +4,10 @@ public class Ou extends BinaireOP {
 
 	//Constructeur
     public Ou (Form e1, Form e2) {
-	this.e1 = e1;
-	this.e2 = e2;
+    	super(e1,e2);
 	}
 
+	//Méthodes
     public void print () {
 	System.out.print("(");
 	e1.print ();

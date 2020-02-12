@@ -2,9 +2,16 @@ package basicClasses;
 
 public class Equivalence extends BinaireOP {
 
-	//Attributs
-	int priorityLevel = 3;
-
 	//Constructeur
-	public Equivalence(){}
+	public Equivalence(Form e1, Form e2){
+		super(e1,e2);
+	}
+
+	public void print(){
+		System.out.print("(");
+		e1.print();
+		System.out.print("↔");
+		e2.print();
+		System.out.print(")");
+	}
 }

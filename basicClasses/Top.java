@@ -1,10 +1,9 @@
 package basicClasses;
 
-public class Top {
+public class Top extends Form {
 
-	//Attributs
-	boolean binaryValue = true;
-
-	//Constructeur
-	public Top(){}
+	//Méthodes
+	public void print(){
+		System.out.print("⊤");
+	}
 }

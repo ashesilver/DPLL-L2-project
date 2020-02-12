@@ -1,10 +1,9 @@
 package basicClasses;
 
-public class Bot {
+public class Bot extends Form {
 
-	//Attributs
-	boolean binaryValue = false;
-
-	//Constructeur
-	public Bot(){}
+	//Méthodes
+	public void print(){
+		System.out.print("⊥");
+	}
 }
