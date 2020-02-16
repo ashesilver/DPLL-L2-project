@@ -7,6 +7,7 @@ public class Equivalence extends BinaireOP {
 		super(e1,e2);
 	}
 
+	//Méthodes
 	public void print(){
 		System.out.print("(");
 		e1.print();
@@ -14,4 +15,5 @@ public class Equivalence extends BinaireOP {
 		e2.print();
 		System.out.print(")");
 	}
+	
 }

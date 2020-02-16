@@ -1,5 +1,7 @@
 package basicClasses;
 
+import java.util.ArrayList;
+
 public class Ou extends BinaireOP {
 
 	//Constructeur
@@ -9,11 +11,21 @@ public class Ou extends BinaireOP {
 
 	//Méthodes
     public void print () {
-	System.out.print("(");
-	e1.print ();
-	System.out.print("∨");
-	e2.print ();
-	System.out.print(")");
+	System.out.print(this.toString());
     }
-    
+
+    public ArrayList<Clause> clausifier()
+	{
+		ArrayList<Clause> listeClause = new ArrayList<Clause>();
+
+		Clause c = new Clause(this);
+		listeClause.add(c);
+
+		return listeClause;
+	}
+
+	public String toString()
+	{
+		return "(" + e1.toString() + "∨" + e2.toString() + ")";
+	}    
 }

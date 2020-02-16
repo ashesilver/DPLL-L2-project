@@ -15,4 +15,13 @@ public class Et extends BinaireOP {
 		e2.print();
 		System.out.print(")");
 	}
+
+	public Form getE1()
+	{
+		return super.getE1();
+	}
+	public Form getE2()
+	{
+		return super.getE2();
+	}
 }

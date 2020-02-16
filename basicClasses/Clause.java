@@ -12,5 +12,9 @@ public class Clause
 	}
 
 	//Méthodes
-
+	public String toString()
+	{
+		String clause = new String(e.toString());
+		return clause;
+	}
 }

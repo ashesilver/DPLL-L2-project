@@ -8,6 +8,11 @@ public abstract class Form {
     public abstract void print();
 
     public abstract ArrayList<Clause> clausifier();
+
+    public void printClausification()
+    {
+    	System.out.println(clausifier().toString());
+    }
     
     
 }
