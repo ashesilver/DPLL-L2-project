@@ -18,11 +18,18 @@ public class Var extends Form {
 	}
 	public ArrayList<Clause> clausifier()
 	{
-		Clause c = new Clause(this);
 		ArrayList<Clause> listeClause = new ArrayList<Clause>();
+		
+		Clause c = new Clause(this);
 		listeClause.add(c);
 		
 		return listeClause;
+	}
+	public Form negation()
+	{
+		Form e = new Non(this);
+		
+		return e;
 	}
 
 	public String toString()

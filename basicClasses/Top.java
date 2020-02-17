@@ -2,18 +2,31 @@ package basicClasses;
 
 import java.util.ArrayList;
 
-public class Top extends Form {
+public class Top extends Form 
+{
 
-	//Méthodes
-	public void print(){
-		System.out.print("⊤");
-	}
-	public ArrayList<Clause> clausifier()
-	{
-		Clause c = new Clause(this);
-		ArrayList<Clause> listeClause = new ArrayList<Clause>();
-		listeClause.add(c);
+    //Méthodes
+    public void print()
+    {
+        System.out.print("⊤");
+    }
+    public ArrayList<Clause> clausifier()
+    {
+        Clause c = new Clause(this);
+        ArrayList<Clause> listeClause = new ArrayList<Clause>();
+        listeClause.add(c);
 
-		return listeClause;
-	}	
+        return listeClause;
+    }
+    public Form negation()
+    {
+    	Form e = new Bot();
+
+    	return e;
+    }
+
+    public String toString()
+    {
+        return "⊤";
+    }
 }

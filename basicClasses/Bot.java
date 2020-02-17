@@ -16,4 +16,15 @@ public class Bot extends Form {
 
 		return listeClause;
 	}
+	public Form negation()
+	{
+		Form e = new Top();
+
+		return e;
+	}
+
+	public String toString()
+	{
+		return "⊥";
+	}
 }

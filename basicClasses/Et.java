@@ -1,27 +1,39 @@
 package basicClasses;
 
-public class Et extends BinaireOP {
+import java.util.ArrayList;
 
-	//Constructeur
-	public Et(Form e1, Form e2){
-		super(e1, e2);
-	}
+public class Et extends BinaireOP
+{
 
-	//Méthodes
-	public void print(){
-		System.out.print("(");
-		e1.print();
-		System.out.print("∧");
-		e2.print();
-		System.out.print(")");
-	}
+    //Constructeur
+    public Et(Form e1, Form e2)
+    {
+        super(e1, e2);
+    }
 
-	public Form getE1()
-	{
-		return super.getE1();
-	}
-	public Form getE2()
-	{
-		return super.getE2();
-	}
+    //Méthodes
+    public void print()
+    {
+        System.out.print(this.toString());
+    }
+    public ArrayList<Clause> clausifier()
+    {
+        ArrayList<Clause> listeClause = new ArrayList<Clause>();
+
+        listeClause.addAll(this.e1.clausifier());
+        listeClause.addAll(this.e2.clausifier());
+
+        return listeClause;
+    }
+    public Form negation()
+    {
+    	Form e = new Ou(this.e1.negation(),this.e2.negation());
+
+    	return e;
+    }
+
+    public String toString()
+    {
+        return "(" + this.e1.toString() + "∧" + this.e2.toString() + ")";
+    }
 }
