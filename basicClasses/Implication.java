@@ -11,28 +11,45 @@ public class Implication extends BinaireOP {
 
 	//Méthodes
 	public void print(){
-		System.out.print("(");
-		e1.print();
-		System.out.print("→");
-		e2.print();
-		System.out.print(")");
+		System.out.print(this.toString());
 	}
 	public ArrayList<Clause> clausifier()
 	{
 		ArrayList<Clause> listeClause = new ArrayList<Clause>();
 
-		Form e1 = new Non(this.e1);
-		Form e2 = new Ou(e1,this.e2);
-		listeClause.addAll(e2.clausifier());
+		listeClause.addAll(this.transform().clausifier());
 
 
 		return listeClause;
 	}
 	public Form negation()
 	{
-		Form e = new Et(this.e1.negation(),this.e2.negation());
+		Form e = new Et(this.e1,this.e2.negation());
 
 		return e;
+	}
+	public Form transform()
+	{
+		Form e1;
+
+		if (this.e1 instanceof BinaireOP) {
+			BinaireOP e2 = (BinaireOP)this.e1.transform().negation();
+			// e2 = e2.transformAll();
+			e1 = e2.transformAll();
+		}
+		else
+		{
+			e1 = this.e1.transform().negation();	
+		}
+		
+		Form e2 = new Ou(e1,this.e2);
+		// Form e = e2;
+
+		// e =e2.transformAll();
+		// e2.print();
+		// System.out.println();
+
+		return e2;
 	}
 
 	public String toString()

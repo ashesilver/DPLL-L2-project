@@ -14,7 +14,11 @@ public class Et extends BinaireOP
     //Méthodes
     public void print()
     {
-        System.out.print(this.toString());
+        System.out.print("(");
+        this.e1.print();
+        System.out.print("∧");
+        this.e2.print();
+        System.out.print(")");
     }
     public ArrayList<Clause> clausifier()
     {
@@ -27,9 +31,13 @@ public class Et extends BinaireOP
     }
     public Form negation()
     {
-    	Form e = new Ou(this.e1.negation(),this.e2.negation());
+        Form e = new Ou(this.e1.negation(), this.e2.negation());
 
-    	return e;
+        return e;
+    }
+    public Form transform()
+    {
+        return this;
     }
 
     public String toString()

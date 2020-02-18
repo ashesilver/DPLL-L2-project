@@ -14,7 +14,11 @@ public class Ou extends BinaireOP
     //Méthodes
     public void print ()
     {
-        System.out.print(this.toString());
+        System.out.print("(");
+        this.e1.print();
+        System.out.print("∨");
+        this.e2.print();
+        System.out.print(")");
     }
 
     public ArrayList<Clause> clausifier()
@@ -24,60 +28,125 @@ public class Ou extends BinaireOP
         if ((this.e1 instanceof Et) || (this.e2 instanceof Et))
         {
             Form e = this.distribution();
+
+            e.print();
+            System.out.println();
+
             listeClause.addAll(e.clausifier());
         }
-        // else if ((this.e1 instanceof Equivalence) && (this.e2 instanceof Equivalence)) {
-        // 	Equivalence e1 = (Equivalence)this.e1;
-        // 	Equivalence e2 = (Equivalence)this.e2;
-        // 	listeClause.addAll(e1.clausifier());
-        // 	listeClause.addAll(e2.clausifier());
-        // }
-        // else if (this.e1 instanceof Equivalence) {
-        // 	Equivalence e1 = (Equivalence)this.e1;
-        // 	listeClause.addAll(e1.clausifier());
-        // 	listeClause.addAll(this.e2.clausifier());
-        // }
-        // else if (this.e2 instanceof Equivalence) {
-        // 	Equivalence e2 = (Equivalence)this.e2;
-        // 	listeClause.addAll(this.e1.clausifier());
-        // 	listeClause.addAll(e2.clausifier());
-        // }
-        // else if ((this.e1 instanceof Implication) && (this.e2 instanceof Implication)) {
-        // 	Implication e1 = (Implication)this.e1;
-        // 	Implication e2 = (Implication)this.e2;
-        // 	listeClause.addAll(e1.clausifier());
-        // 	listeClause.addAll(e2.clausifier());
-        // }
-        // else if (this.e1 instanceof Implication) {
-        // 	Implication e1 = (Implication)this.e1;
-        // 	listeClause.addAll(e1.clausifier());
-        // 	listeClause.addAll(this.e2.clausifier());
-        // }
-        // else if (this.e2 instanceof Implication) {
-        // 	Implication e2 = (Implication)this.e2;
-        // 	listeClause.addAll(this.e1.clausifier());
-        // 	listeClause.addAll(e2.clausifier());
-        // }
-        // else if ((this.e1 instanceof Non) && (this.e2 instanceof Non)) {
-        // 	Non e1 = (Non)this.e1;
-        // 	Non e2 = (Non)this.e2;
-        // 	listeClause.addAll(e1.clausifier());
-        // 	listeClause.addAll(e2.clausifier());
-        // }
-        // else if (this.e1 instanceof Non) {
-        // 	Non e1 = (Non)this.e1;
-        // 	listeClause.addAll(e1.clausifier());
-        // 	listeClause.addAll(this.e2.clausifier());
-        // }
-        // else if (this.e2 instanceof Non) {
-        // 	Non e2 = (Non)this.e2;
-        // 	listeClause.addAll(this.e1.clausifier());
-        // 	listeClause.addAll(e2.clausifier());
-        // }
+        else if ((this.e1 instanceof Equivalence) && (this.e2 instanceof Equivalence))
+        {
+            Equivalence e1 = (Equivalence)this.e1;
+            Equivalence e2 = (Equivalence)this.e2;
+            this.e1 = e1.transform();
+            this.e2 = e2.transform();
+            listeClause.addAll(this.clausifier());
+        }
+        else if (this.e1 instanceof Equivalence)
+        {
+            Equivalence e1 = (Equivalence)this.e1;
+            this.e1 = e1.transform();
+            listeClause.addAll(this.clausifier());
+        }
+        else if (this.e2 instanceof Equivalence)
+        {
+            Equivalence e2 = (Equivalence)this.e2;
+            this.e2 = e2.transform();
+            listeClause.addAll(this.clausifier());
+        }
+        else if ((this.e1 instanceof Implication) && (this.e2 instanceof Implication))
+        {
+            Implication e1 = (Implication)this.e1;
+            Implication e2 = (Implication)this.e2;
+            this.e1 = e1.transform();
+            this.e1.print();
+            System.out.println();
+            this.e2 = e2.transform();
+            this.e2.print();
+            System.out.println();
+            listeClause.addAll(this.clausifier());
+        }
+        else if (this.e1 instanceof Implication)
+        {
+            Implication e1 = (Implication)this.e1;
+            this.e1 = e1.transform();
+
+
+            this.e1.print();
+            System.out.println();
+
+            listeClause.addAll(this.clausifier());
+        }
+        else if (this.e2 instanceof Implication)
+        {
+            Implication e2 = (Implication)this.e2;
+            this.e2 = e2.transform();
+            this.e2.print();
+            System.out.println();
+            listeClause.addAll(this.clausifier());
+        }
+        else if ((this.e1 instanceof Non) && (this.e2 instanceof Non))
+        {
+            Non e1 = (Non)this.e1;
+            Non e2 = (Non)this.e2;
+            if (!(e1.e instanceof Var) || !(e2.e instanceof Var))
+            {
+                if (!(e1.e instanceof Var))
+                {
+                    this.e1 = e1.transform();
+                    this.e1.print();
+                    System.out.println();
+                }
+                if (!(e2.e instanceof Var))
+                {
+                    this.e2 = e2.transform();
+                    this.e2.print();
+                    System.out.println();
+                }
+                listeClause.addAll(this.clausifier());
+            }
+            else
+            {
+                Clause c = new Clause(this);
+                listeClause.add(c);
+            }
+
+        }
+        else if (this.e1 instanceof Non)
+        {
+            Non e1 = (Non)this.e1;
+            if (!(e1.e instanceof Var))
+            {
+                this.e1 = e1.transform();
+                this.e1.print();
+                System.out.println();
+                listeClause.addAll(this.clausifier());
+            }
+            else
+            {
+                Clause c = new Clause(this);
+                listeClause.add(c);
+            }
+
+        }
+        else if (this.e2 instanceof Non)
+        {
+            Non e2 = (Non)this.e2;
+            if (!(e2.e instanceof Var))
+            {
+                this.e2 = e2.transform();
+                this.e2.print();
+                System.out.println();
+                listeClause.addAll(this.clausifier());
+            }
+            else
+            {
+                Clause c = new Clause(this);
+                listeClause.add(c);
+            }
+        }
         else
         {
-        	// listeClause.addAll(this.e1.clausifier());
-        	// listeClause.addAll(this.e2.clausifier());
             Clause c = new Clause(this);
             listeClause.add(c);
         }
@@ -107,13 +176,17 @@ public class Ou extends BinaireOP
     }
     public Form negation()
     {
-    	Form e = new Et(this.e1.negation(),this.e2.negation());
+        Form e = new Et(this.e1.negation(), this.e2.negation());
 
-    	return e;
+        return e;
+    }
+    public Form transform()
+    {
+        return this;
     }
 
     public String toString()
     {
-        return "(" + e1.toString() + "∨" + e2.toString() + ")";
+        return e1.toString() + "∨" + e2.toString();
     }
 }

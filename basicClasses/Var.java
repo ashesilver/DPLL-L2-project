@@ -31,6 +31,10 @@ public class Var extends Form {
 		
 		return e;
 	}
+	public Form transform()
+	{
+		return this;
+	}
 
 	public String toString()
 	{

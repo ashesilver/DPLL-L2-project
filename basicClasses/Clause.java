@@ -15,6 +15,6 @@ public class Clause
 	public String toString()
 	{
 		String clause = new String(e.toString());
-		return clause;
+		return "(" + clause + ")";
 	}
 }

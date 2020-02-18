@@ -29,9 +29,9 @@ public abstract class Form {
 
     /*------------------------------------+
 	| Permet d'avoir la négation de chaque| 
-	| Objet de chaque Classe			  |
+	| Object        					  |
 	+------------------------------------*/
     public abstract Form negation();
     
-    
+    public abstract Form transform();
 }

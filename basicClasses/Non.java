@@ -28,13 +28,7 @@ public class Non extends Form
             Clause c = new Clause(this);
             listeClause.add(c);
         }
-        else if (this.e instanceof Top)
-        {
-            Form a = this.e.negation();
-            Clause c = new Clause(a);
-            listeClause.add(c);
-        }
-        else if (this.e instanceof Bot)
+        else if ((this.e instanceof Top) || (this.e instanceof Bot))
         {
             Form a = this.e.negation();
             Clause c = new Clause(a);
@@ -49,7 +43,13 @@ public class Non extends Form
     }
     public Form negation()
     {
-        return e;
+        return this.e;
+    }
+    public Form transform()
+    {
+        this.e = this.e.transform().negation();
+
+        return this.e;
     }
 
     public String toString()

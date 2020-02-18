@@ -20,11 +20,8 @@ public class Equivalence extends BinaireOP
     {
         ArrayList<Clause> listeClause = new ArrayList<Clause>();
 
-        Form e1 = new Implication(this.e1, this.e2);
-        Form e2 = new Implication(this.e2, this.e1);
-        Form e3 = new Et(e1, e2);
 
-        listeClause.addAll(e3.clausifier());
+        listeClause.addAll(this.transform().clausifier());
 
 
 
@@ -35,6 +32,14 @@ public class Equivalence extends BinaireOP
     	Form e = new Ou(this.e1.negation(),this.e2.negation());
 
     	return e;
+    }
+    public Form transform()
+    {
+        Implication e1 = new Implication(this.e1, this.e2);
+        Implication e2 = new Implication(this.e2, this.e1);
+        Form e5 = new Et(e1.transform(), e2.transform());
+
+        return e5;
     }
 
     public String toString()
