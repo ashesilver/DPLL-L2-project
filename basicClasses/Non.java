@@ -17,7 +17,8 @@ public class Non extends Form
     //Méthodes
     public void print()
     {
-        System.out.print(this.toString());
+        System.out.print("¬");
+        this.e.print();
     }
     public ArrayList<Clause> clausifier()
     {
@@ -26,12 +27,6 @@ public class Non extends Form
         if (this.e instanceof Var)
         {
             Clause c = new Clause(this);
-            listeClause.add(c);
-        }
-        else if ((this.e instanceof Top) || (this.e instanceof Bot))
-        {
-            Form a = this.e.negation();
-            Clause c = new Clause(a);
             listeClause.add(c);
         }
         else
@@ -47,7 +42,7 @@ public class Non extends Form
     }
     public Form transform()
     {
-        this.e = this.e.transform().negation();
+        this.e = this.e.negation();
 
         return this.e;
     }

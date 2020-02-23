@@ -14,37 +14,35 @@ public class Equivalence extends BinaireOP
     //Méthodes
     public void print()
     {
-        System.out.print(this.toString());
-    }
-    public ArrayList<Clause> clausifier()
-    {
-        ArrayList<Clause> listeClause = new ArrayList<Clause>();
-
-
-        listeClause.addAll(this.transform().clausifier());
-
-
-
-        return listeClause;
+        System.out.print("(");
+        this.e1.print();
+        System.out.print("↔");
+        this.e2.print();
+        System.out.print(")");
     }
     public Form negation()
     {
-    	Form e = new Ou(this.e1.negation(),this.e2.negation());
+        this.e1 = this.e1.negation();
+        this.e2 = this.e2.negation();
+        Form e;
 
-    	return e;
+        if ((this.e1 instanceof Et) || (this.e2 instanceof Et))
+        {
+            e = this.distribution();
+        }
+        else
+        {
+            e = new Ou(this.e1, this.e2);
+        }
+
+        return e;
     }
     public Form transform()
     {
         Implication e1 = new Implication(this.e1, this.e2);
         Implication e2 = new Implication(this.e2, this.e1);
-        Form e5 = new Et(e1.transform(), e2.transform());
+        Form e3 = new Et(e1.transform(), e2.transform());
 
-        return e5;
+        return e3;
     }
-
-    public String toString()
-    {
-        return "(" + this.e1.toString() + "↔" + this.e2.toString() + ")";
-    }
-
 }

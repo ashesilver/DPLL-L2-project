@@ -17,6 +17,7 @@ public class Et extends BinaireOP
         System.out.print("(");
         this.e1.print();
         System.out.print("∧");
+        // System.out.print("^");
         this.e2.print();
         System.out.print(")");
     }
@@ -37,11 +38,15 @@ public class Et extends BinaireOP
     }
     public Form transform()
     {
+        this.e1 = this.e1.transform();
+        this.e2 = this.e2.transform();
+
         return this;
     }
 
     public String toString()
     {
         return "(" + this.e1.toString() + "∧" + this.e2.toString() + ")";
+        // return "(" + this.e1.toString() + "^" + this.e2.toString() + ")";
     }
 }

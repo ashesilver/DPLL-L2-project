@@ -8,7 +8,7 @@ public class Top extends Form
     //Méthodes
     public void print()
     {
-        System.out.print("⊤");
+        System.out.print(this.toString());
     }
     public ArrayList<Clause> clausifier()
     {
@@ -32,5 +32,6 @@ public class Top extends Form
     public String toString()
     {
         return "⊤";
+        // return "T";
     }
 }
