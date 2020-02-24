@@ -20,8 +20,8 @@ class Core
         case 1 :
             Form e1 = new Var("A");
             Form e2 = new Var("B");
-            Form e3 = new Implication(e1, e2);
-            Form e4 = new Implication(e3, e1);
+            Form e3 = new Implication(e2, e1);
+            Form e4 = new Implication(e1, e3);
             Form e5 = new Non(e4);
 
             e5.print();
@@ -33,12 +33,12 @@ class Core
             Form e6 = new Var("A");
             Form e7 = new Var("B");
             Form e8 = new Var("C");
-            Form e9 = new Implication(e6, e7);
-            Form e10 = new Implication(e9, e8);
-            Form e11 = new Implication(e6, e7);
-            Form e12 = new Implication(e10, e11);
-            Form e13 = new Implication(e12, e6);
-            Form e14 = new Implication(e13, e8);
+            Form e9 = new Implication(e6, e8);
+            Form e10 = new Implication(e6, e7);
+            Form e11 = new Implication(e10, e9);
+            Form e12 = new Implication(e7, e8);
+            Form e13 = new Implication(e6, e12);
+            Form e14 = new Implication(e13, e11);
             Form e15 = new Non(e14);
 
             e15.print();
@@ -74,12 +74,12 @@ class Core
             Form e26 = new Var("A");
             Form e27 = new Var("B");
             Form e28 = new Var("C");
-            Form e29 = new Ou(e26, e27);
-            Form e30 = new Implication(e26, e28);
-            Form e31 = new Implication(e29, e30);
-            Form e32 = new Implication(e27, e28);
-            Form e33 = new Implication(e31, e32);
-            Form e34 = new Implication(e33, e28);
+            Form e29 = new Implication(e27, e28);
+            Form e30 = new Implication(e29, e28);
+            Form e31 = new Implication(e26, e27);
+            Form e32 = new Implication(e31, e30);
+            Form e33 = new Ou(e26, e27);
+            Form e34 = new Implication(e33, e32);
             Form e35 = new Non(e34);
 
             e35.print();
@@ -90,9 +90,9 @@ class Core
         case 6 :
             Form e36 = new Var("A");
             Form e37 = new Bot();
-            Form e38 = new Implication(e36, e37);
-            Form e39 = new Non(e36);
-            Form e40 = new Implication(e38, e39);
+            Form e38 = new Non(e36);
+            Form e39 = new Implication(e37, e38);
+            Form e40 = new Implication(e36, e39);
             Form e41 = new Non(e40);
 
             e41.print();
