@@ -12,6 +12,11 @@ class Core
         do
         {
             i = sc.nextInt();
+
+            if ((i < 1) || (i > 7))
+            {
+                System.out.print("Entrez bien un numéro compris entre 1 et 7 : ");
+            }
         }
         while ((i < 1) || (i > 7));
 
