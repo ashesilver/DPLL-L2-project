@@ -1,0 +1,13 @@
+﻿1. Créer la classe "Literal"
+
+
+2. Changer l'attribut de la classe "Clause" en tableau de litéraux et dont la classe "Literal" est la classe mère + Implémenter les tests de DPLL corespondant.
+
+
+3. Correction de la classe Form et de ses sous-classes pour que ça colle avec la classe "Clause"
+
+
+4. Créer la classe "Ensemble_de_Clauses" + Implémenter les méthodes de DPLL associées
+
+
+5. Recherches sur les "designs patterns : visiteurs"
