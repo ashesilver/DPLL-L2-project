@@ -10,4 +10,10 @@ public class Literal
 	{
 		this.e = e;
 	}
+	
+	//Methodes
+	public String toString()
+	{
+		return e.toString();
+	}
 }

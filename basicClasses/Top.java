@@ -5,15 +5,18 @@ import java.util.ArrayList;
 public class Top extends Form 
 {
 
-    //Méthodes
+    //Methodes
     public void print()
     {
         System.out.print(this.toString());
     }
     public ArrayList<Clause> clausifier()
     {
-        Clause c = new Clause(this);
-        ArrayList<Clause> listeClause = new ArrayList<Clause>();
+    	ArrayList<Clause> listeClause = new ArrayList<Clause>();
+        Clause c = new Clause();
+        
+        Literal l = new Literal(this);
+        c.ajouter(l);
         listeClause.add(c);
 
         return listeClause;
@@ -32,6 +35,5 @@ public class Top extends Form
     public String toString()
     {
         return "⊤";
-        // return "T";
     }
 }

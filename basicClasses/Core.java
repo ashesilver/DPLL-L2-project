@@ -8,18 +8,20 @@ class Core
     {
         Scanner sc = new Scanner(System.in);
         int i;
-        System.out.print("Entrez le numéro de l'exemple entre 1 et 7 : ");
+        System.out.print("Entrez le numero de l'exemple entre 1 et 7 : ");
         do
         {
             i = sc.nextInt();
 
             if ((i < 1) || (i > 7))
             {
-                System.out.print("Entrez bien un numéro compris entre 1 et 7 : ");
+                System.out.print("Entrez bien un numero compris entre 1 et 7 : ");
             }
         }
         while ((i < 1) || (i > 7));
-
+        
+        sc.close();
+        
         switch(i)
         {
         case 1 :

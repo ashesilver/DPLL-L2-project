@@ -14,7 +14,7 @@ public class Non extends Form
         this.e = e;
     }
 
-    //Méthodes
+    //Methodes
     public void print()
     {
         System.out.print("¬");
@@ -26,7 +26,9 @@ public class Non extends Form
 
         if (this.e instanceof Var)
         {
-            Clause c = new Clause(this);
+            Clause c = new Clause();
+            Literal l = new Literal(this);
+            c.ajouter(l);
             listeClause.add(c);
         }
         else

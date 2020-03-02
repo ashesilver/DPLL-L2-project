@@ -11,13 +11,12 @@ public class Ou extends BinaireOP
         super(e1, e2);
     }
 
-    //Méthodes
+    //Methodes
     public void print ()
     {
         System.out.print("(");
         this.e1.print();
         System.out.print("∨");
-        // System.out.print("v");
         this.e2.print();
         System.out.print(")");
     }
@@ -25,8 +24,9 @@ public class Ou extends BinaireOP
     public ArrayList<Clause> clausifier()
     {
         ArrayList<Clause> listeClause = new ArrayList<Clause>();
-
-        Clause c = new Clause(this);
+        
+        Clause c = new Clause();
+        c.ajouter(this.e1.clausifier(), this.e2.clausifier());
         listeClause.add(c);
 
         return listeClause;
@@ -48,6 +48,5 @@ public class Ou extends BinaireOP
     public String toString()
     {
         return e1.toString() + "∨" + e2.toString();
-        // return e1.toString() + "v" + e2.toString();
     }
 }
