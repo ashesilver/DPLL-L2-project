@@ -36,16 +36,26 @@ public class Clause
 		}
 	}
 
-	//TODO faire une methode tautologie qui rend true si il y a une tautologie dans la clause
+
 	public boolean estTautologie()
 	{
 		boolean val = false;
-		int k = 0;
+		int i = 0;
+		int j;
+		Literal l;
 		
-		while (k < litteraux.size() && !val)
+		while (i < litteraux.size()-1 && !val)
 		{
-			
+			j= i+1;
+			while (j < litteraux.size() &&!val)
+			{
+				if (((this.litteraux).get(i)).e == Not.((this.litteraux).get(j)).e)
+				{
+					val = true;
+				}
+			}
 		}
+		return val;
 	}
 
 	
