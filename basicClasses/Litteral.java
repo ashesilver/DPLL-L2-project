@@ -1,12 +1,12 @@
 package basicClasses;
 
-public class Literal
+public class Litteral
 {
 	//Attributs
 	private Form e;
 
 	//Constructeur
-	public Literal(Form e)
+	public Litteral(Form e)
 	{
 		this.e = e;
 	}

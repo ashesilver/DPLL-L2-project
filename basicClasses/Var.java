@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Var extends Form {
 
 	//Attributs
-	String nom;
+	private String nom;
 
 	//Constructeur
 	public Var(String nom){
@@ -20,7 +20,7 @@ public class Var extends Form {
 	{
 		ArrayList<Clause> listeClause = new ArrayList<Clause>();
 		Clause c = new Clause();
-		Literal l = new Literal(this);
+		Litteral l = new Litteral(this);
 		c.ajouter(l);
 		listeClause.add(c);
 		

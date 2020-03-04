@@ -16,7 +16,8 @@ CLASSES = \
 	basicClasses/Form.java \
 	basicClasses/Implication.java \
 	basicClasses/Clause.java \
-	basicClasses/Core.java  
+	basicClasses/Core.java \
+	basicClasses/Litteral.java 
 
 default: classes
 

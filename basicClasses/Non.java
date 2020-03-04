@@ -6,7 +6,7 @@ public class Non extends Form
 {
 
     //Atributs
-    Form e;
+    private Form e;
 
     //Constructeur
     public Non (Form e)
@@ -27,7 +27,7 @@ public class Non extends Form
         if (this.e instanceof Var)
         {
             Clause c = new Clause();
-            Literal l = new Literal(this);
+            Litteral l = new Litteral(this);
             c.ajouter(l);
             listeClause.add(c);
         }

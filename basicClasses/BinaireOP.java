@@ -6,7 +6,7 @@ public abstract class BinaireOP extends Form
 {
 
     //Atributs
-    public Form e1, e2;
+    Form e1, e2;
 
     //Constructeurs
     public BinaireOP(Form e1, Form e2)

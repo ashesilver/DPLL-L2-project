@@ -23,10 +23,7 @@ public abstract class Form
     | Permet d'afficher la forme clausale |
     |  dans le terminal                   |
     +------------------------------------*/
-    public void printClausification()
-    {
-        System.out.println(clausifier().toString());
-    }
+    
 
     // public Form Clausifier2caca()
     // {

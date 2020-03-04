@@ -15,7 +15,7 @@ public class Top extends Form
     	ArrayList<Clause> listeClause = new ArrayList<Clause>();
         Clause c = new Clause();
         
-        Literal l = new Literal(this);
+        Litteral l = new Litteral(this);
         c.ajouter(l);
         listeClause.add(c);
 

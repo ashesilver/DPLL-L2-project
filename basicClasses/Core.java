@@ -30,10 +30,11 @@ class Core
             Form e3 = new Implication(e2, e1);
             Form e4 = new Implication(e1, e3);
             Form e5 = new Non(e4);
+            EnsembleClauses c1 = new EnsembleClauses(e5.clausifier());
 
             e5.print();
             System.out.println();
-            e5.printClausification();
+            c1.printEnsembleClauses();
             System.out.println();
             break;
         case 2 :
@@ -47,10 +48,11 @@ class Core
             Form e13 = new Implication(e6, e12);
             Form e14 = new Implication(e13, e11);
             Form e15 = new Non(e14);
+            EnsembleClauses c2 = new EnsembleClauses(e15.clausifier());
 
             e15.print();
             System.out.println();
-            e15.printClausification();
+            c2.printEnsembleClauses();
             System.out.println();
             break;
         case 3 :
@@ -59,10 +61,11 @@ class Core
             Form e18 = new Et(e16, e17);
             Form e19 = new Implication(e18, e17);
             Form e20 = new Non(e19);
+            EnsembleClauses c3 = new EnsembleClauses(e20.clausifier());
 
             e20.print();
             System.out.println();
-            e20.printClausification();
+            c3.printEnsembleClauses();
             System.out.println();
             break;
         case 4 :
@@ -71,10 +74,11 @@ class Core
             Form e23 = new Ou (e21, e22);
             Form e24 = new Implication(e22, e23);
             Form e25 = new Non(e24);
+            EnsembleClauses c4 = new EnsembleClauses(e25.clausifier());
 
             e25.print();
             System.out.println();
-            e25.printClausification();
+            c4.printEnsembleClauses();
             System.out.println();
             break;
         case 5 :
@@ -88,10 +92,11 @@ class Core
             Form e33 = new Ou(e26, e27);
             Form e34 = new Implication(e33, e32);
             Form e35 = new Non(e34);
+            EnsembleClauses c5 = new EnsembleClauses(e35.clausifier());
 
             e35.print();
             System.out.println();
-            e35.printClausification();
+            c5.printEnsembleClauses();
             System.out.println();
             break;
         case 6 :
@@ -101,10 +106,11 @@ class Core
             Form e39 = new Implication(e37, e38);
             Form e40 = new Implication(e36, e39);
             Form e41 = new Non(e40);
+            EnsembleClauses c6 = new EnsembleClauses(e41.clausifier());
 
             e41.print();
             System.out.println();
-            e41.printClausification();
+            c6.printEnsembleClauses();
             System.out.println();
             break;
         case 7 :
@@ -112,10 +118,11 @@ class Core
             Form e43 = new Var("A");
             Form e44 = new Implication(e42, e43);
             Form e45 = new Non(e44);
+            EnsembleClauses c7 = new EnsembleClauses(e45.clausifier());
 
             e45.print();
             System.out.println();
-            e45.printClausification();
+            c7.printEnsembleClauses();
             System.out.println();
             break;
         }
