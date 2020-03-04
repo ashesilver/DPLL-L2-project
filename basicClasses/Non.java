@@ -1,7 +1,5 @@
 package basicClasses;
 
-import java.util.ArrayList;
-
 public class Non extends Form
 {
 
@@ -20,23 +18,23 @@ public class Non extends Form
         System.out.print("¬");
         this.e.print();
     }
-    public ArrayList<Clause> clausifier()
+    public EnsembleClauses clausifier()
     {
-        ArrayList<Clause> listeClause = new ArrayList<Clause>();
+    	EnsembleClauses eC = new EnsembleClauses();
 
         if (this.e instanceof Var)
         {
             Clause c = new Clause();
             Litteral l = new Litteral(this);
             c.ajouter(l);
-            listeClause.add(c);
+            eC.add(c);
         }
         else
         {
-            listeClause.addAll(this.e.negation().clausifier());
+            eC.addAll(this.e.negation().clausifier());
         }
 
-        return listeClause;
+        return eC;
     }
     public Form negation()
     {

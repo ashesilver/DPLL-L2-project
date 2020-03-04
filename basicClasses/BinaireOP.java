@@ -1,7 +1,5 @@
 package basicClasses;
 
-import java.util.ArrayList;
-
 public abstract class BinaireOP extends Form
 {
 
@@ -16,13 +14,13 @@ public abstract class BinaireOP extends Form
     }
 
     //Méthodes
-    public ArrayList<Clause> clausifier()
+    public EnsembleClauses clausifier()
     {
-        ArrayList<Clause> listeClause = new ArrayList<Clause>();
+    	EnsembleClauses eC = new EnsembleClauses();
 
-        listeClause.addAll(this.transform().clausifier());
+        eC.addAll(this.transform().clausifier());
 
-        return listeClause;
+        return eC;
     }
     public BinaireOP distribution()
     {

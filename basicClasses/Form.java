@@ -1,7 +1,5 @@
 package basicClasses;
 
-import java.util.ArrayList;
-
 public abstract class Form
 {
 
@@ -17,7 +15,7 @@ public abstract class Form
     | Permet de clausifier chaque Objet   |
     |  de chaque Classe                   |
     +------------------------------------*/
-    public abstract ArrayList<Clause> clausifier();
+    public abstract EnsembleClauses clausifier();
 
     /*------------------------------------+
     | Permet d'afficher la forme clausale |

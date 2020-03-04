@@ -1,7 +1,5 @@
 package basicClasses;
 
-import java.util.ArrayList;
-
 public class Et extends BinaireOP
 {
 
@@ -20,14 +18,14 @@ public class Et extends BinaireOP
         this.e2.print();
         System.out.print(")");
     }
-    public ArrayList<Clause> clausifier()
+    public EnsembleClauses clausifier()
     {
-        ArrayList<Clause> listeClause = new ArrayList<Clause>();
+    	EnsembleClauses eC = new EnsembleClauses();
 
-        listeClause.addAll(this.e1.clausifier());
-        listeClause.addAll(this.e2.clausifier());
+        eC.addAll(this.e1.clausifier());
+        eC.addAll(this.e2.clausifier());
 
-        return listeClause;
+        return eC;
     }
     public Form negation()
     {

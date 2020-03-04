@@ -1,7 +1,5 @@
 package basicClasses;
 
-import java.util.ArrayList;
-
 public class Top extends Form 
 {
 
@@ -10,16 +8,16 @@ public class Top extends Form
     {
         System.out.print(this.toString());
     }
-    public ArrayList<Clause> clausifier()
+    public EnsembleClauses clausifier()
     {
-    	ArrayList<Clause> listeClause = new ArrayList<Clause>();
+    	EnsembleClauses eC = new EnsembleClauses();
         Clause c = new Clause();
         
         Litteral l = new Litteral(this);
         c.ajouter(l);
-        listeClause.add(c);
+        eC.add(c);
 
-        return listeClause;
+        return eC;
     }
     public Form negation()
     {

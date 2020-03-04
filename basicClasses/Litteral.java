@@ -3,7 +3,7 @@ package basicClasses;
 public class Litteral
 {
 	//Attributs
-	private Form e;
+	Form e;
 
 	//Constructeur
 	public Litteral(Form e)
