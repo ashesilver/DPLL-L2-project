@@ -3,10 +3,10 @@ package basicClasses;
 import java.util.ArrayList;
 
 public class EnsembleClauses {
-	//Attributs
+	//Attributes
 	ArrayList<Clause> listeClauses;
 	
-	//Constructeur
+	//Constructor
 	public EnsembleClauses()
 	{
 		this.listeClauses = new ArrayList<>();
@@ -17,7 +17,7 @@ public class EnsembleClauses {
 		this.listeClauses = listeClauses.listeClauses;
 	}
 	
-	//Methodes
+	//Methods
 	public void add(Clause e)
 	{
 		this.listeClauses.add(e);
@@ -48,6 +48,12 @@ public class EnsembleClauses {
 		return val;
 	}
 	
+	//TODO faire dpll_Tautologie qui retourne void et enlève les tautologies de l'ensemble
+	public void dpll_Tautologie()
+	{
+		
+	}
+	
 	public boolean avoirUnitaire()
 	{
 		boolean val = false;
@@ -63,21 +69,27 @@ public class EnsembleClauses {
 		return val;
 	}
 	
-//	public boolean estDoublon(Clause c)
-//	{
-//		boolean val = false;
-//		int k = 0;
-//		
-//		while (k < this.listeClauses.size() && !val)
-//		{
-//			if (this.listeClauses.get(k) == c)
-//			{
-//				val = true;
-//			}
-//			
-//			k += 1;
-//		}
-//		
-//		return val;
-//	}
+	//TODO faire dpll_Unitaire qui retourne void et qui met le litteral de la clause unitaire à true ou false en fonction de son signe et applique ceci sur les autres clauses
+	public void dpll_Unitaire()
+	{
+		
+	}
+	
+	//TODO faire clausesPures qui retourne un tableau des indices des clauses pures de l'ensemble
+	public int[] clausesPures()
+	{
+		return null;
+	}
+	
+	//TODO faire dpll_Splitting qui retourne void et qui prend un litteral d'une clause et le met à true ou false en fonction de son signe et applique ceci sur les autres clauses
+	public void dpll_Splitting()
+	{
+		
+	}
+	
+	//TODO faire dpll qui appelle toutes les autres methodes pour appliquer la DPLL
+	public void dpll()
+	{
+		
+	}
 }

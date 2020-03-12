@@ -78,6 +78,17 @@ public class Clause
 		return this.litteraux.size() == 1;
 	}
 
+	//TODO Faire possèdeTrue qui retourne un bool si la clause contient "T"
+	public boolean possedeTrue()
+	{
+		return false;
+	}
+	
+	//TODO Faire possèdeFalse qui retourne un bool et supprime en même temps "⊥" de la clause et sinon si la clause ne contient que "⊥" alors on change "⊥" en "□"
+	public boolean possedeFalse()
+	{
+		return false;
+	}
 	
 	public String toString()
 	{
