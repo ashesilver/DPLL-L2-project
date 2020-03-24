@@ -33,46 +33,108 @@ public class EnsembleClauses {
         System.out.println(this.listeClauses.toString());
     }
 	
-	public boolean avoirTautologie()
+	public ArrayList<Integer> avoirTautologie()
 	{
-		boolean val = false;
-		int k = 0;
+		ArrayList<Integer> T = new ArrayList<Integer>();
 		
-		while (k < this.listeClauses.size() && !val)
+		for (int i = 0; i < this.listeClauses.size(); i++)
 		{
-			val = this.listeClauses.get(k).estTautologie();
-			
-			k += 1;
+			if (this.listeClauses.get(i).estTautologie())
+			{
+				T.add(i);
+			}
 		}
 		
-		return val;
+		return T;
 	}
 	
-	//TODO faire dpll_Tautologie qui retourne void et enlève les tautologies de l'ensemble
 	public void dpll_Tautologie()
 	{
+		ArrayList<Integer> T = avoirTautologie();
 		
-	}
-	
-	public boolean avoirUnitaire()
-	{
-		boolean val = false;
-		int k = 0;
-		
-		while (k < this.listeClauses.size() && !val)
+		if (!(T.isEmpty()))
 		{
-			val = this.listeClauses.get(k).estUnitaire();
-			
-			k += 1;
+			for (int i = 0; i < T.size(); i++)
+			{
+				this.listeClauses.remove(T.get(i) - i);
+			}
 		}
-		
-		return val;
 	}
 	
-	//TODO faire dpll_Unitaire qui retourne void et qui met le litteral de la clause unitaire à true ou false en fonction de son signe et applique ceci sur les autres clauses
+	public int avoirUnitaire()
+	{
+		int k = 0;
+		int resultat = -1;
+
+		while (k < this.listeClauses.size() && resultat == -1)
+		{
+			if (this.listeClauses.get(k).estUnitaire())
+			{
+				resultat = k;
+			}
+			
+			k++;
+		}
+
+		return resultat;
+	}
+	
+	private void changerPourTrue(Form e)
+	{
+		for (int i = 0; i < this.listeClauses.size(); i++)
+		{
+			this.listeClauses.get(i).changerPourTrue(e);
+			
+			if (this.listeClauses.get(i).possedeTrue())
+			{
+				this.listeClauses.remove(i);
+				i--;
+			}
+			else
+			{
+				this.listeClauses.get(i).possedeFalse();
+			}
+		}
+	}
+	
+	private void changerPourFalse(Form e)
+	{
+		for (int i = 0; i < this.listeClauses.size(); i++)
+		{
+			this.listeClauses.get(i).changerPourFalse(e);
+			
+			if (this.listeClauses.get(i).possedeTrue())
+			{
+				this.listeClauses.remove(i);
+				i--;
+			}
+			else
+			{
+				this.listeClauses.get(i).possedeFalse();
+			}
+		}
+	}
+	
 	public void dpll_Unitaire()
 	{
-		
+		int resultat = this.avoirUnitaire();
+		int k = 0;
+
+		while (k < this.listeClauses.size() && resultat != -1)
+		{
+			if (this.listeClauses.get(resultat).litteraux.get(0).a != null)
+			{
+				this.changerPourFalse(this.listeClauses.get(resultat).litteraux.get(0).a);
+			}
+			else
+			{
+				this.changerPourTrue(this.listeClauses.get(resultat).litteraux.get(0).e);
+			}
+
+			resultat = this.avoirUnitaire();
+			k++;
+		}
+
 	}
 	
 	//TODO faire clausesPures qui retourne un tableau des indices des clauses pures de l'ensemble
@@ -81,15 +143,42 @@ public class EnsembleClauses {
 		return null;
 	}
 	
-	//TODO faire dpll_Splitting qui retourne void et qui prend un litteral d'une clause et le met à true ou false en fonction de son signe et applique ceci sur les autres clauses
 	public void dpll_Splitting()
 	{
+		int k = 0;
 		
+		while (k < this.listeClauses.size() && this.listeClauses.get(k) == null)
+		{
+			k++;
+		}
+		
+		if (this.listeClauses.get(k).litteraux.get(0).a != null)
+		{
+			this.changerPourFalse(this.listeClauses.get(k).litteraux.get(0).a);
+		}
+		else
+		{
+			this.changerPourTrue(this.listeClauses.get(k).litteraux.get(0).e);
+		}
 	}
 	
-	//TODO faire dpll qui appelle toutes les autres methodes pour appliquer la DPLL
+
 	public void dpll()
-	{
-		
+	{	
+		while (!this.listeClauses.isEmpty() && !(this.listeClauses.size() == 1 && this.listeClauses.get(0).litteraux.isEmpty()))
+		{
+			if (!this.avoirTautologie().isEmpty())
+			{
+				this.dpll_Tautologie();
+			}
+			else if (this.avoirUnitaire() != -1)
+			{
+				this.dpll_Unitaire();
+			}
+			else
+			{
+				this.dpll_Splitting();
+			}
+		}
 	}
 }

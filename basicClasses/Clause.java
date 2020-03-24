@@ -5,7 +5,7 @@ import java.util.ArrayList;
 public class Clause
 {
 	//Atributs
-	private ArrayList<Litteral> litteraux;
+	ArrayList<Litteral> litteraux;
 
 	//Constructeur
 	public Clause()
@@ -78,16 +78,78 @@ public class Clause
 		return this.litteraux.size() == 1;
 	}
 
-	//TODO Faire possèdeTrue qui retourne un bool si la clause contient "T"
+	
 	public boolean possedeTrue()
 	{
-		return false;
+		int k = 0;
+		boolean val = false;
+		
+		while (k < this.litteraux.size() && !val)
+		{
+			if (this.litteraux.get(k).e instanceof Top)
+			{
+				val = true;
+			}
+			
+			k++;
+		}
+		
+		return val;
 	}
 	
-	//TODO Faire possèdeFalse qui retourne un bool et supprime en même temps "⊥" de la clause et sinon si la clause ne contient que "⊥" alors on change "⊥" en "□"
 	public boolean possedeFalse()
 	{
-		return false;
+		int k = 0;
+		boolean val = false;
+		
+		while (k < this.litteraux.size() && !val)
+		{
+			if (this.litteraux.get(k).e instanceof Bot)
+			{
+				val = true;
+				this.litteraux.remove(k);
+			}
+			
+			k++;
+		}
+		
+		return val;
+	}
+	
+	void changerPourTrue(Form e)
+	{
+		for (int i = 0; i < this.litteraux.size(); i++)
+		{
+			if (this.litteraux.get(i).a != null)
+			{
+				if (e == this.litteraux.get(i).a)
+				{
+					this.litteraux.get(i).changerPourTrue();
+				}
+			}
+			else if (e == this.litteraux.get(i).e)
+			{
+				this.litteraux.get(i).changerPourTrue();
+			}
+		}
+	}
+	
+	void changerPourFalse(Form e)
+	{
+		for (int i = 0; i < this.litteraux.size(); i++)
+		{
+			if (this.litteraux.get(i).a != null)
+			{
+				if (e == this.litteraux.get(i).a)
+				{
+					this.litteraux.get(i).changerPourFalse();
+				}
+			}
+			else if (e == this.litteraux.get(i).e)
+			{
+				this.litteraux.get(i).changerPourFalse();
+			}
+		}
 	}
 	
 	public String toString()
