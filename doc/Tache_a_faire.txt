@@ -1,17 +1,3 @@
-Dans la Classe "Clause" :
-
-1. Faire possèdeTrue qui retourne un bool si la clause contient "T"
-
-2. Faire possèdeFalse qui retourne un bool et supprime en même temps "⊥" de la clause et sinon si la clause ne contient que "⊥" alors on change "⊥" en "□"
-
 Dans la Classe "EnsembleClauses" :
 
-3. Faire dpll_Tautologie qui retourne void et enlève les tautologies de l'ensemble
-
-4. Faire dpll_Unitaire qui retourne void et qui met le litteral de la clause unitaire à true ou false en fonction de son signe et applique ceci sur les autres clauses
-
-5. Faire dpll_Splitting qui retourne void et qui prend un litteral d'une clause et le met à true ou false en fonction de son signe et applique ceci sur les autres clauses
-
-6. Faire dpll qui appelle toutes les autres methodes pour appliquer la DPLL
-
-7. (Bonus) Faire clausesPures qui retourne un tableau des indices des clauses pures de l'ensemble
+1. (Bonus) Faire clausesPures qui retourne un tableau des indices des clauses pures de l'ensemble
