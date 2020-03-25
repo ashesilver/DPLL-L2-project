@@ -28,6 +28,16 @@ public class EnsembleClauses {
 		this.listeClauses.addAll(listeClauses.listeClauses);
 	}
 	
+	public Clause iemeClause(int i)
+	{
+		return (i < this.listeClauses.size()) ? this.listeClauses.get(i) : null;
+	}
+	
+	public Litteral iemeLitteraliemeClause(int i, int j)
+	{
+		return this.iemeClause(j).iemeLitteral(i);
+	}
+	
 	public void printEnsembleClauses()
     {
         System.out.println(this.listeClauses.toString());
@@ -39,7 +49,7 @@ public class EnsembleClauses {
 		
 		for (int i = 0; i < this.listeClauses.size(); i++)
 		{
-			if (this.listeClauses.get(i).estTautologie())
+			if (this.iemeClause(i).estTautologie())
 			{
 				T.add(i);
 			}
@@ -68,7 +78,7 @@ public class EnsembleClauses {
 
 		while (k < this.listeClauses.size() && resultat == -1)
 		{
-			if (this.listeClauses.get(k).estUnitaire())
+			if (this.iemeClause(k).estUnitaire())
 			{
 				resultat = k;
 			}
@@ -83,16 +93,16 @@ public class EnsembleClauses {
 	{
 		for (int i = 0; i < this.listeClauses.size(); i++)
 		{
-			this.listeClauses.get(i).changerPourTrue(e);
+			this.iemeClause(i).changerPourTrue(e);
 			
-			if (this.listeClauses.get(i).possedeTrue())
+			if (this.iemeClause(i).possedeTrue())
 			{
 				this.listeClauses.remove(i);
 				i--;
 			}
 			else
 			{
-				this.listeClauses.get(i).possedeFalse();
+				this.iemeClause(i).possedeFalse();
 			}
 		}
 	}
@@ -101,16 +111,16 @@ public class EnsembleClauses {
 	{
 		for (int i = 0; i < this.listeClauses.size(); i++)
 		{
-			this.listeClauses.get(i).changerPourFalse(e);
+			this.iemeClause(i).changerPourFalse(e);
 			
-			if (this.listeClauses.get(i).possedeTrue())
+			if (this.iemeClause(i).possedeTrue())
 			{
 				this.listeClauses.remove(i);
 				i--;
 			}
 			else
 			{
-				this.listeClauses.get(i).possedeFalse();
+				this.iemeClause(i).possedeFalse();
 			}
 		}
 	}
@@ -118,47 +128,102 @@ public class EnsembleClauses {
 	public void dpll_Unitaire()
 	{
 		int resultat = this.avoirUnitaire();
-		int k = 0;
 
-		while (k < this.listeClauses.size() && resultat != -1)
+		if (resultat != -1)
 		{
-			if (this.listeClauses.get(resultat).litteraux.get(0).a != null)
+			if (this.iemeLitteraliemeClause(0, resultat).a != null)
 			{
-				this.changerPourFalse(this.listeClauses.get(resultat).litteraux.get(0).a);
+				this.changerPourFalse(this.iemeLitteraliemeClause(0, resultat).a);
 			}
 			else
 			{
-				this.changerPourTrue(this.listeClauses.get(resultat).litteraux.get(0).e);
+				this.changerPourTrue(this.iemeLitteraliemeClause(0, resultat).e);
 			}
+		}
+	}
 
-			resultat = this.avoirUnitaire();
-			k++;
+	public ArrayList<Integer> clausesPures()
+	{
+		ArrayList<Integer> T = new ArrayList<>();
+		ArrayList<Form> lit = new ArrayList<>();
+
+		for (int i = 0; i < this.listeClauses.size() - 1; i++)
+		{
+			for (int j = 0; j < this.iemeClause(i).litteraux.size() && i + 1 < this.listeClauses.size() && T.isEmpty(); j++)
+			{
+				boolean estNegation = false;
+				int k = i + 1;
+				T.add(i);
+
+				if (!lit.contains(this.iemeLitteraliemeClause(j, i).getVar()))
+				{
+					lit.add(this.iemeLitteraliemeClause(j, i).getVar());
+
+					while (k < this.listeClauses.size() && !estNegation)
+					{
+						boolean estEgal = false;
+						int l = 0;
+
+						while (l < this.iemeClause(k).litteraux.size() && !estEgal && !estNegation)
+						{
+							if (this.iemeLitteraliemeClause(j, i).estNegation(this.iemeLitteraliemeClause(l, k)))
+							{
+								estNegation = true;
+							}
+							else if (this.iemeLitteraliemeClause(j, i).estEgal(this.iemeLitteraliemeClause(l, k)))
+							{
+								estEgal = true;
+							}
+
+							l++;
+						}
+
+						if (estEgal)
+						{
+							T.add(k);
+						}
+
+						k++;
+					}
+				}
+
+				if (estNegation || T.size() == 1)
+				{
+					T.clear();
+				}
+			}
 		}
 
+		return T;
 	}
 	
-	//TODO faire clausesPures qui retourne un tableau des indices des clauses pures de l'ensemble
-	public int[] clausesPures()
+	public void dpll_clausesPures()
 	{
-		return null;
+		ArrayList<Integer> T = this.clausesPures();
+		int k = 0;
+		while (k < T.size())
+		{
+			this.listeClauses.remove(T.get(k) - k);
+			k++;
+		}
 	}
 	
 	public void dpll_Splitting()
 	{
 		int k = 0;
 		
-		while (k < this.listeClauses.size() && this.listeClauses.get(k) == null)
+		while (k < this.listeClauses.size() && this.iemeClause(k) == null)
 		{
 			k++;
 		}
 		
-		if (this.listeClauses.get(k).litteraux.get(0).a != null)
+		if (this.iemeLitteraliemeClause(0, k).a != null)
 		{
-			this.changerPourFalse(this.listeClauses.get(k).litteraux.get(0).a);
+			this.changerPourFalse(this.iemeLitteraliemeClause(0, k).a);
 		}
 		else
 		{
-			this.changerPourTrue(this.listeClauses.get(k).litteraux.get(0).e);
+			this.changerPourTrue(this.iemeLitteraliemeClause(0, k).e);
 		}
 	}
 	
@@ -170,15 +235,30 @@ public class EnsembleClauses {
 			if (!this.avoirTautologie().isEmpty())
 			{
 				this.dpll_Tautologie();
+				System.out.print("Après Suppression des tautologies : ");
+				this.printEnsembleClauses();
 			}
 			else if (this.avoirUnitaire() != -1)
 			{
 				this.dpll_Unitaire();
+				System.out.print("Après le Principe de Clauses Unitaires : ");
+				this.printEnsembleClauses();
+			}
+			else if (!this.clausesPures().isEmpty())
+			{
+				this.dpll_clausesPures();
+				System.out.print("Après le Principe de Clauses Pures : ");
+				this.printEnsembleClauses();
 			}
 			else
 			{
 				this.dpll_Splitting();
+				System.out.print("Après le Splitting : ");
+				this.printEnsembleClauses();
 			}
 		}
+		
+		System.out.print("Après la DPLL : ");
+		this.printEnsembleClauses();
 	}
 }

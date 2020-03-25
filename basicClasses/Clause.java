@@ -28,14 +28,18 @@ public class Clause
 	{
 		for (int i = 0; i < c1.listeClauses.size(); i++)
 		{
-			this.litteraux.addAll(c1.listeClauses.get(i).litteraux);
+			this.litteraux.addAll(c1.iemeClause(i).litteraux);
 		}
 		for (int i1 = 0; i1 < c2.listeClauses.size(); i1++)
 		{
-			this.litteraux.addAll(c2.listeClauses.get(i1).litteraux);
+			this.litteraux.addAll(c2.iemeClause(i1).litteraux);
 		}
 	}
 
+	public Litteral iemeLitteral(int i)
+	{
+		return i < this.litteraux.size() ? this.litteraux.get(i) : null;
+	}
 
 	public boolean estTautologie()
 	{
@@ -49,16 +53,16 @@ public class Clause
 			
 			while (j < litteraux.size() && !val)
 			{
-				if (this.litteraux.get(i).e instanceof Non)
+				if (this.iemeLitteral(i).e instanceof Non)
 				{
-					if (this.litteraux.get(i).e.negation() == this.litteraux.get(j).e)
+					if (this.iemeLitteral(i).e.negation() == this.iemeLitteral(j).e)
 					{
 						val = true;
 					}
 				}
 				else
 				{
-					if (this.litteraux.get(i).e == this.litteraux.get(j).e.negation())
+					if (this.iemeLitteral(i).e == this.iemeLitteral(j).e.negation())
 					{
 						val = true;
 					}
@@ -86,7 +90,7 @@ public class Clause
 		
 		while (k < this.litteraux.size() && !val)
 		{
-			if (this.litteraux.get(k).e instanceof Top)
+			if (this.iemeLitteral(k).e instanceof Top)
 			{
 				val = true;
 			}
@@ -104,7 +108,7 @@ public class Clause
 		
 		while (k < this.litteraux.size() && !val)
 		{
-			if (this.litteraux.get(k).e instanceof Bot)
+			if (this.iemeLitteral(k).e instanceof Bot)
 			{
 				val = true;
 				this.litteraux.remove(k);
@@ -120,16 +124,16 @@ public class Clause
 	{
 		for (int i = 0; i < this.litteraux.size(); i++)
 		{
-			if (this.litteraux.get(i).a != null)
+			if (this.iemeLitteral(i).a != null)
 			{
-				if (e == this.litteraux.get(i).a)
+				if (e == this.iemeLitteral(i).a)
 				{
-					this.litteraux.get(i).changerPourTrue();
+					this.iemeLitteral(i).changerPourTrue();
 				}
 			}
-			else if (e == this.litteraux.get(i).e)
+			else if (e == this.iemeLitteral(i).e)
 			{
-				this.litteraux.get(i).changerPourTrue();
+				this.iemeLitteral(i).changerPourTrue();
 			}
 		}
 	}
@@ -138,16 +142,16 @@ public class Clause
 	{
 		for (int i = 0; i < this.litteraux.size(); i++)
 		{
-			if (this.litteraux.get(i).a != null)
+			if (this.iemeLitteral(i).a != null)
 			{
-				if (e == this.litteraux.get(i).a)
+				if (e == this.iemeLitteral(i).a)
 				{
-					this.litteraux.get(i).changerPourFalse();
+					this.iemeLitteral(i).changerPourFalse();
 				}
 			}
-			else if (e == this.litteraux.get(i).e)
+			else if (e == this.iemeLitteral(i).e)
 			{
-				this.litteraux.get(i).changerPourFalse();
+				this.iemeLitteral(i).changerPourFalse();
 			}
 		}
 	}

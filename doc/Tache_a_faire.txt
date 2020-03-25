@@ -1,3 +1,0 @@
-Dans la Classe "EnsembleClauses" :
-
-1. (Bonus) Faire clausesPures qui retourne un tableau des indices des clauses pures de l'ensemble

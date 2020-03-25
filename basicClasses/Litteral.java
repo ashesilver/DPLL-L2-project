@@ -29,9 +29,15 @@ public class Litteral
 			return this.e;
 		}
 	}
-	public String toString()
+	
+	public boolean estEgal(Litteral l)
+	{	
+		return (this.getVar() == l.getVar()) && ((this.a != null && l.a != null) || (this.a == null && l.a == null));
+	}
+	
+	public boolean estNegation(Litteral l)
 	{
-		return e.toString();
+		return (this.getVar() == l.getVar()) && ((this.a == null && l.a != null) || (this.a != null && l.a == null));
 	}
 	
 	void changerPourTrue()
@@ -77,5 +83,10 @@ public class Litteral
 		{
 			this.e = new Bot();
 		}
+	}
+	
+	public String toString()
+	{
+		return e.toString();
 	}
 }

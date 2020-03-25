@@ -37,7 +37,6 @@ class Core
             System.out.println("estTautologie sur l'ensemble : " + !c1.avoirTautologie().isEmpty());
             System.out.println("estUnitaire sur l'ensemble : " + (c1.avoirUnitaire() != -1));
             c1.dpll();
-            c1.printEnsembleClauses();
             break;
         case 2 :
             Form e6 = new Var("A");
@@ -58,7 +57,6 @@ class Core
             System.out.println("estTautologie sur l'ensemble : " + !c2.avoirTautologie().isEmpty());
             System.out.println("estUnitaire sur l'ensemble : " + (c2.avoirUnitaire() != -1));
             c2.dpll();
-            c2.printEnsembleClauses();
             break;
         case 3 :
             Form e16 = new Var("A");
@@ -74,7 +72,6 @@ class Core
             System.out.println("estTautologie sur l'ensemble : " + !c3.avoirTautologie().isEmpty());
             System.out.println("estUnitaire sur l'ensemble : " + (c3.avoirUnitaire() != -1));
             c3.dpll();
-            c3.printEnsembleClauses();
             break;
         case 4 :
             Form e21 = new Var("A");
@@ -90,7 +87,6 @@ class Core
             System.out.println("estTautologie sur l'ensemble : " + !c4.avoirTautologie().isEmpty());
             System.out.println("estUnitaire sur l'ensemble : " + (c4.avoirUnitaire() != -1));
             c4.dpll();
-            c4.printEnsembleClauses();
             break;
         case 5 :
             Form e26 = new Var("A");
@@ -111,7 +107,6 @@ class Core
             System.out.println("estTautologie sur l'ensemble : " + !c5.avoirTautologie().isEmpty());
             System.out.println("estUnitaire sur l'ensemble : " + (c5.avoirUnitaire() != -1));
             c5.dpll();
-            c5.printEnsembleClauses();
             break;
         case 6 :
             Form e36 = new Var("A");
@@ -128,7 +123,6 @@ class Core
             System.out.println("estTautologie sur l'ensemble : " + !c6.avoirTautologie().isEmpty());
             System.out.println("estUnitaire sur l'ensemble : " + (c6.avoirUnitaire() != -1));
             c6.dpll();
-            c6.printEnsembleClauses();
             break;
         case 7 :
             Form e42 = new Bot();
@@ -143,7 +137,6 @@ class Core
             System.out.println("estTautologie sur l'ensemble : " + c7.avoirTautologie().isEmpty());
             System.out.println("estUnitaire sur l'ensemble : " + (c7.avoirUnitaire() != -1));
             c7.dpll();
-            c7.printEnsembleClauses();
             break;
         }
     	
@@ -183,6 +176,30 @@ class Core
 //    	c2.printEnsembleClauses();
 //    	System.out.println(c1.estDoublon(c2.listeClauses.get(0)));
     	
-    	
+//    	Test ClausePures
+//    	Form e1 = new Var("A");
+//    	Form e2 = new Var("B");
+//    	Form e3 = new Var("C");
+//    	Form e4 = new Non(e2);
+//    	Form e5 = new Ou(e1, e2);
+//    	Form e6 = new Ou(e2, e3);
+//    	Form e7 = new Ou(e4, e1);
+//    	Form e8 = new Et(e5, e6);
+//    	Form e9 = new Et(e8, e7);
+//    	Form e11 = new Ou(e4, e2);
+//    	Form e12 = new Et(e9, e11);
+//    	Form e15 = new Var("D");
+//    	Form e13 = new Ou(e15, e15);
+//    	Form e14 = new Et(e12, e13);
+//    	EnsembleClauses c1 = new EnsembleClauses(e14.clausifier());
+//    	
+//    	e14.print();
+//    	System.out.println();
+//    	c1.printEnsembleClauses();
+//    	System.out.println(c1.clausesPures().toString());
+//    	c1.dpll_clausesPures();
+//    	System.out.println(c1.clausesPures().toString());
+//    	c1.dpll_clausesPures();
+//    	c1.printEnsembleClauses();
     }
 }
