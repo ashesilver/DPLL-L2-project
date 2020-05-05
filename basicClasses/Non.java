@@ -22,7 +22,7 @@ public class Non extends Form
     {
     	EnsembleClauses eC = new EnsembleClauses();
 
-        if (this.e instanceof Var)
+        if (this.e.accept_EstVar(v))
         {
             Clause c = new Clause();
             Litteral l = new Litteral(this);
