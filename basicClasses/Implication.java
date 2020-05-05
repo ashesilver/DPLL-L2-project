@@ -3,6 +3,8 @@ package basicClasses;
 public class Implication extends BinaireOP
 {
 
+    MonVisiteur v = new Visiteur();
+
     //Constructeur
     public Implication(Form e1, Form e2)
     {
@@ -10,6 +12,11 @@ public class Implication extends BinaireOP
     }
 
     //Méthodes
+    
+    public boolean accept_EstEt (MonVisiteur v) {
+    	return v.Est_Et (this);
+    }
+    
     public void print()
     {
         System.out.print("(");
