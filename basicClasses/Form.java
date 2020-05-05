@@ -30,7 +30,7 @@ public abstract class Form
     public abstract Form transform();
     
     
-    MonVisiteur v = new Visiteur();
+    //MonVisiteur v = new Visiteur();
     
     
     public abstract boolean accept_EstEt (MonVisiteur v) {
