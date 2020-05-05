@@ -5,6 +5,8 @@ public class Litteral
 	//Attributs
 	Form e;
 	Form a;
+	
+	MonVisiteur v = new Visiteur();
 
 	//Constructeur
 	public Litteral(Form e)
@@ -18,6 +20,17 @@ public class Litteral
 	}
 	
 	//Methodes
+	
+	public boolean accept_EstTop (MonVisiteur v) {
+    		return v.EstTop (this);
+	}
+	public boolean accept_EstBot (MonVisiteur v) {
+    		return v.EstBot (this);
+    	}
+	public boolean accept_EstNon (MonVisiteur v) {
+    		return v.EstNon (this);
+    	}
+	
 	public Form getVar()
 	{
 		if (this.a != null)
