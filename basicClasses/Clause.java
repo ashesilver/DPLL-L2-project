@@ -6,6 +6,8 @@ public class Clause
 {
 	//Atributs
 	ArrayList<Litteral> litteraux;
+	
+	MonVisiteur v = new Visiteur();
 
 	//Constructeur
 	public Clause()
@@ -19,6 +21,20 @@ public class Clause
 		return litteraux;
 	}
 	//Methodes
+	
+	public boolean accept_EstTop (MonVisiteur v) {
+    		return v.EstTop (this);
+    	}
+    	public boolean accept_EstBot (MonVisiteur v) {
+    		return v.EstBot (this);
+    	}
+    	public boolean accept_EstNon (MonVisiteur v) {
+    		return v.EstNon (this);
+    	}
+	
+	
+	
+	
 	public void ajouter(Litteral l)
 	{
 		litteraux.add(l);
