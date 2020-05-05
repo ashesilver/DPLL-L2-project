@@ -5,6 +5,8 @@ public abstract class BinaireOP extends Form
 
     //Atributs
     Form e1, e2;
+    
+    MonVisiteur v = new Visiteur();
 
     //Constructeurs
     public BinaireOP(Form e1, Form e2)
@@ -14,6 +16,11 @@ public abstract class BinaireOP extends Form
     }
 
     //Méthodes
+    
+    public boolean accept_EstEt (MonVisiteur v) {
+    	return v.Est_Et (this);
+    }
+    
     public EnsembleClauses clausifier()
     {
     	EnsembleClauses eC = new EnsembleClauses();
