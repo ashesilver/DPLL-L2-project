@@ -28,4 +28,24 @@ public abstract class Form
     | disjonctions de l'Objet             |
     +------------------------------------*/
     public abstract Form transform();
+    
+    
+    MonVisiteur v = new Visiteur();
+    
+    
+    public boolean accept_EstEt (MonVisiteur v) {
+    	return v.Est_Et (this);
+    }
+    public boolean accept_EstTop (MonVisiteur v) {
+    	return v.EstTop (this);
+    }
+    public boolean accept_EstBot (MonVisiteur v) {
+    	return v.EstBot (this);
+    }
+    public boolean accept_EstVar (MonVisiteur v) {
+    	return v.EstVar (this);
+    }
+    public boolean accept_EstNon (MonVisiteur v) {
+    	return v.EstNon (this);
+    }
 }
