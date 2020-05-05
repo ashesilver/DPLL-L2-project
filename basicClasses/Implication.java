@@ -30,7 +30,7 @@ public class Implication extends BinaireOP
         this.e2 = this.e2.transform();
         Form e;
 
-        if ((this.e1 instanceof Et) || (this.e2 instanceof Et))
+        if (this.e1.accept_EstEt(v)) || (this.e2.accept_EstEt(v)))
         {
             e = this.distribution();
         }
