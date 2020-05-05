@@ -53,7 +53,7 @@ public class Clause
 			
 			while (j < litteraux.size() && !val)
 			{
-				if (this.iemeLitteral(i).e instanceof Non)
+				if (this.iemeLitteral(i).e.accept_EstNon(v))
 				{
 					if (this.iemeLitteral(i).e.negation() == this.iemeLitteral(j).e)
 					{
@@ -90,7 +90,7 @@ public class Clause
 		
 		while (k < this.litteraux.size() && !val)
 		{
-			if (this.iemeLitteral(k).e instanceof Top)
+			if (this.iemeLitteral(k).e.accept_EstTop(v))
 			{
 				val = true;
 			}
@@ -108,7 +108,7 @@ public class Clause
 		
 		while (k < this.litteraux.size() && !val)
 		{
-			if (this.iemeLitteral(k).e instanceof Bot)
+			if (this.iemeLitteral(k).e.accept_EstBot(v))
 			{
 				val = true;
 				this.litteraux.remove(k);
