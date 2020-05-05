@@ -5,6 +5,8 @@ public class Non extends Form
 
     //Atributs
     private Form e;
+    
+    MonVisiteur v = new Visiteur();
 
     //Constructeur
     public Non (Form e)
@@ -13,6 +15,11 @@ public class Non extends Form
     }
 
     //Methodes
+    
+    public boolean accept_EstVar (MonVisiteur v) {
+    	return v.EstVar (this);
+    }
+    
     public void print()
     {
         System.out.print("¬");
