@@ -11,7 +11,7 @@ public class Litteral
 	{
 		this.e = e;
 		
-		if (this.e instanceof Non)
+		if (this.e.accept_EstNon(v))
 		{
 			this.a = e.negation();
 		}
@@ -42,7 +42,7 @@ public class Litteral
 	
 	void changerPourTrue()
 	{
-		if (!(this.getVar() instanceof Top) && !(this.getVar() instanceof Bot))
+		if (!(this.getVar().accept_EstTop(v)) && !(this.getVar().accept_EstBot(v)))
 		{
 			if (this.a != null)
 			{
@@ -54,7 +54,7 @@ public class Litteral
 				this.e = new Top();
 			}
 		}
-		else if (this.getVar() instanceof Top)
+		else if (this.getVar().accept_EstTop(v))
 		{
 			if (this.a != null)
 			{
@@ -62,7 +62,7 @@ public class Litteral
 				this.a = null;
 			}
 		}
-		else if (this.getVar() instanceof Bot)
+		else if (this.getVar().accept_EstBot(v))
 		{
 			if (this.a != null)
 			{
