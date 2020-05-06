@@ -47,4 +47,27 @@ public class Ou extends BinaireOP
     {
         return e1.toString() + "∨" + e2.toString();
     }
+
+    // Visiteurs
+        
+    public boolean accept_estEt (MonVisiteur v) {
+    	return v.estEt (this);
+    }
+
+    public boolean accept_estTop (MonVisiteur v) {
+    	return v.estTop (this);
+    }
+
+    public boolean accept_estBot (MonVisiteur v) {
+    	return v.estBot (this);
+    }
+
+    public boolean accept_estVar (MonVisiteur v) {
+    	return v.estVar (this);
+    }
+
+    public boolean accept_estNon (MonVisiteur v) {
+    	return v.estNon (this);
+    }
+
 }

@@ -7,8 +7,6 @@ public class Clause
 	//Atributs
 	ArrayList<Litteral> litteraux;
 	
-	MonVisiteur v = new Visiteur();
-
 	//Constructeur
 	public Clause()
 	{
@@ -21,19 +19,6 @@ public class Clause
 		return litteraux;
 	}
 	//Methodes
-	
-	public boolean accept_EstTop (MonVisiteur v) {
-    		return v.EstTop (this);
-    	}
-    	public boolean accept_EstBot (MonVisiteur v) {
-    		return v.EstBot (this);
-    	}
-    	public boolean accept_EstNon (MonVisiteur v) {
-    		return v.EstNon (this);
-    	}
-	
-	
-	
 	
 	public void ajouter(Litteral l)
 	{
@@ -62,6 +47,7 @@ public class Clause
 		boolean val = false;
 		int i = 0;
 		int j;
+		MonVisiteur v = new Visiteur();	
 		
 		while ((i < litteraux.size() - 1) && !val)
 		{
@@ -69,7 +55,7 @@ public class Clause
 			
 			while (j < litteraux.size() && !val)
 			{
-				if (this.iemeLitteral(i).e.accept_EstNon(v))
+				if (this.iemeLitteral(i).e.accept_estNon(v))
 				{
 					if (this.iemeLitteral(i).e.negation() == this.iemeLitteral(j).e)
 					{
@@ -103,10 +89,11 @@ public class Clause
 	{
 		int k = 0;
 		boolean val = false;
+		MonVisiteur v = new Visiteur();	
 		
 		while (k < this.litteraux.size() && !val)
 		{
-			if (this.iemeLitteral(k).e.accept_EstTop(v))
+			if (this.iemeLitteral(k).e.accept_estTop(v))
 			{
 				val = true;
 			}
@@ -121,10 +108,11 @@ public class Clause
 	{
 		int k = 0;
 		boolean val = false;
-		
+		MonVisiteur v = new Visiteur();
+
 		while (k < this.litteraux.size() && !val)
 		{
-			if (this.iemeLitteral(k).e.accept_EstBot(v))
+			if (this.iemeLitteral(k).e.accept_estBot(v))
 			{
 				val = true;
 				this.litteraux.remove(k);

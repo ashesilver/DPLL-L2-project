@@ -1,8 +1,8 @@
-JFLAGS = -g
-JC = javac
+JFLAGS=
+JC=javac
 .SUFFIXES: .java .class
 .java.class: 
-	$(JC) $(JFLAGS) $*.java
+	$(JC) $*.java
 
 CLASSES = \
 	basicClasses/BinaireOP.java \
@@ -14,11 +14,13 @@ CLASSES = \
 	basicClasses/Top.java \
 	basicClasses/Var.java \
 	basicClasses/Form.java \
+	basicClasses/MonVisiteur.java \
+	basicClasses/Visiteur.java \
 	basicClasses/Implication.java \
 	basicClasses/Clause.java \
 	basicClasses/Core.java \
 	basicClasses/Litteral.java \
-	basicClasses/EnsembleClauses
+	basicClasses/EnsembleClauses.java
 
 default: classes
 

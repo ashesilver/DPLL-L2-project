@@ -6,31 +6,19 @@ public class Litteral
 	Form e;
 	Form a;
 	
-	MonVisiteur v = new Visiteur();
-
 	//Constructeur
 	public Litteral(Form e)
 	{
 		this.e = e;
-		
-		if (this.e.accept_EstNon(v))
+		MonVisiteur v = new Visiteur();	
+
+		if (this.e.accept_estNon(v))
 		{
 			this.a = e.negation();
 		}
 	}
 	
 	//Methodes
-	
-	public boolean accept_EstTop (MonVisiteur v) {
-    		return v.EstTop (this);
-	}
-	public boolean accept_EstBot (MonVisiteur v) {
-    		return v.EstBot (this);
-    	}
-	public boolean accept_EstNon (MonVisiteur v) {
-    		return v.EstNon (this);
-    	}
-	
 	public Form getVar()
 	{
 		if (this.a != null)
@@ -55,7 +43,9 @@ public class Litteral
 	
 	void changerPourTrue()
 	{
-		if (!(this.getVar().accept_EstTop(v)) && !(this.getVar().accept_EstBot(v)))
+		MonVisiteur v = new Visiteur();	
+		if (!(this.getVar().accept_estTop(v)) &&
+		    !(this.getVar().accept_estBot(v)))
 		{
 			if (this.a != null)
 			{
@@ -67,7 +57,7 @@ public class Litteral
 				this.e = new Top();
 			}
 		}
-		else if (this.getVar().accept_EstTop(v))
+		else if (this.getVar().accept_estTop(v))
 		{
 			if (this.a != null)
 			{
@@ -75,7 +65,7 @@ public class Litteral
 				this.a = null;
 			}
 		}
-		else if (this.getVar().accept_EstBot(v))
+		else if (this.getVar().accept_estBot(v))
 		{
 			if (this.a != null)
 			{

@@ -29,23 +29,16 @@ public abstract class Form
     +------------------------------------*/
     public abstract Form transform();
     
-    
     //MonVisiteur v = new Visiteur();
     
-    
-    public abstract boolean accept_EstEt (MonVisiteur v) {
-    	return v.Est_Et (this);
-    }
-    public abstract boolean accept_EstTop (MonVisiteur v) {
-    	return v.EstTop (this);
-    }
-    public abstract boolean accept_EstBot (MonVisiteur v) {
-    	return v.EstBot (this);
-    }
-    public abstract boolean accept_EstVar (MonVisiteur v) {
-    	return v.EstVar (this);
-    }
-    public abstract boolean accept_EstNon (MonVisiteur v) {
-    	return v.EstNon (this);
-    }
+    public abstract boolean accept_estEt (MonVisiteur v);
+
+    public abstract boolean accept_estTop (MonVisiteur v);
+
+    public abstract boolean accept_estBot (MonVisiteur v);
+
+    public abstract boolean accept_estVar (MonVisiteur v);
+
+    public abstract boolean accept_estNon (MonVisiteur v);
+
 }

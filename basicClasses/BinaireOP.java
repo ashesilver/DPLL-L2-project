@@ -5,8 +5,6 @@ public abstract class BinaireOP extends Form
 
     //Atributs
     Form e1, e2;
-    
-    MonVisiteur v = new Visiteur();
 
     //Constructeurs
     public BinaireOP(Form e1, Form e2)
@@ -16,11 +14,7 @@ public abstract class BinaireOP extends Form
     }
 
     //Méthodes
-    
-    public boolean accept_EstEt (MonVisiteur v) {
-    	return v.Est_Et (this);
-    }
-    
+        
     public EnsembleClauses clausifier()
     {
     	EnsembleClauses eC = new EnsembleClauses();
@@ -32,15 +26,16 @@ public abstract class BinaireOP extends Form
     public BinaireOP distribution()
     {
     	BinaireOP e3, e4, e5;
+	MonVisiteur v = new Visiteur();
 
-        if (this.e1.accept_EstEt(v))
+        if (this.e1.accept_estEt(v))
         {
             Et e1 = (Et)this.e1;
             e3 = new Ou(e1.e1, this.e2);
             e4 = new Ou(e1.e2, this.e2);
             e5 = new Et(e3.distribution(), e4.distribution());
         }
-        else if (this.e2.accept_EstEt(v))
+        else if (this.e2.accept_estEt(v))
         {
             Et e2 = (Et)this.e2;
             e3 = new Ou(this.e1, e2.e1);

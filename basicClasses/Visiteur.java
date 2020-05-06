@@ -4,137 +4,136 @@ public class Visiteur implements MonVisiteur {
 	
 	
 	//estEt
-	boolean estEt (Et objet) {
+	public boolean estEt (Et objet) {
 		return true;
 	}
-	boolean estEt (Ou objet){
+	public boolean estEt (Ou objet){
 		return false;
 	}
-	bool1ean estEt (Implication objet) {
+	public boolean estEt (Implication objet) {
 		return false;
 	}
-	boolean estEt (Equivalence objet) {
+	public boolean estEt (Equivalence objet) {
 		return false;
 	}
-	boolean estEt (Var objet) {
+	public boolean estEt (Var objet) {
 		return false;
 	}
-	boolean estEt (Top objet) {
+	public boolean estEt (Top objet) {
 		return false;
 	}
-	boolean estEt (Bot objet) {
+	public boolean estEt (Bot objet) {
 		return false;
 	}
-	boolean estEt (Non objet) {
+	public boolean estEt (Non objet) {
 		return false;
 	}
 	
 	//estTop
 	
-	boolean estTop (Et objet) {
+	public boolean estTop (Et objet) {
 		return false;
 	}
-	boolean estTop (Ou objet) {
+	public boolean estTop (Ou objet) {
 		return false;
 	}
-	boolean estTop (Implication objet) {
+	public boolean estTop (Implication objet) {
 		return false;
 	}
-	boolean estTop (Equivalence objet) {
+	public boolean estTop (Equivalence objet) {
 		return false;
 	}
-	boolean estTop (Var objet) {
+	public boolean estTop (Var objet) {
 		return false;
 	}
-	boolean estTop (Top objet) {
+	public boolean estTop (Top objet) {
 		return true;
 	}
-	boolean estTop (Bot objet) {
+	public boolean estTop (Bot objet) {
 		return false;
 	}
-	boolean estTop (Non objet) {
+	public boolean estTop (Non objet) {
 		return false;
 	}
-	
 	
 	//estBot
 	
-	boolean estBot (Et objet) {
+	public boolean estBot (Et objet) {
 		return false;
 	}
-	boolean estBot (Ou objet) {
+	public boolean estBot (Ou objet) {
 		return false;
 	}
-	boolean estBot (Implication objet) {
+	public boolean estBot (Implication objet) {
 		return false;
 	}
-	boolean estBot (Equivalence objet) {
+	public boolean estBot (Equivalence objet) {
 		return false;
 	}
-	boolean estBot (Var objet) {
+	public boolean estBot (Var objet) {
 		return false;
 	}
-	boolean estBot (Top objet) {
+	public boolean estBot (Top objet) {
 		return false;
 	}
-	boolean estBot (Bot objet) {
+	public boolean estBot (Bot objet) {
 		return true;
 	}
-	boolean estBot (Non objet) {
+	public boolean estBot (Non objet) {
 		return false;
 	}
 	
 	//estVar
 	
-	boolean estVar (Et objet) {
+	public boolean estVar (Et objet) {
 		return false;
 	}
-	boolean estVar (Ou objet) {
+	public boolean estVar (Ou objet) {
 		return false;
 	}
-	boolean estVar (Implication objet) {
+	public boolean estVar (Implication objet) {
 		return false;
 	}
-	boolean estVar (Equivalence objet) {
+	public boolean estVar (Equivalence objet) {
 		return false;
 	}
-	boolean estVar (Var objet) {
+	public boolean estVar (Var objet) {
 		return true;
 	}
-	boolean estVar (Top objet) {
+	public boolean estVar (Top objet) {
 		return false;
 	}
-	boolean estVar (Bot objet) {
+	public boolean estVar (Bot objet) {
 		return false;
 	}
-	boolean estVar (Non objet) {
+	public boolean estVar (Non objet) {
 		return false;
 	}
 	
 	//estNon 
 	
-	boolean estNon (Et objet) {
+	public boolean estNon (Et objet) {
 		return false;
 	}
-	boolean estNon (Ou objet) {
+	public boolean estNon (Ou objet) {
 		return false;
 	}
-	boolean estNon (Implication objet) {
+	public boolean estNon (Implication objet) {
 		return false;
 	}
-	boolean estNon (Equivalence objet) {
+	public boolean estNon (Equivalence objet) {
 		return false;
 	}
-	boolean estNon (Var objet) {
+	public boolean estNon (Var objet) {
 		return false;
 	}
-	boolean estNon (Top objet) {
+	public boolean estNon (Top objet) {
 		return false;
 	}
-	boolean estNon (Bot objet) {
+	public boolean estNon (Bot objet) {
 		return false;
 	}
-	boolean estNon (Non objet) {
+	public boolean estNon (Non objet) {
 		return true;
 	}
 
